@@ -8,12 +8,7 @@ function Timeline({ posts }) {
         {posts.length === 0 ? (
           <p className="no-posts">まだ投稿がありません</p>
         ) : (
-          posts.map((post) => (
-            <Post
-              key={post.id}
-              post={post}
-            />
-          ))
+          posts.map((post) => <Post key={post.id} post={post} />)
         )}
       </div>
     </div>
