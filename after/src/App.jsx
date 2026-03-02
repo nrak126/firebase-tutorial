@@ -3,7 +3,7 @@ import Login from "./components/Login";
 import Timeline from "./components/Timeline";
 import PostForm from "./components/PostForm";
 import { signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
-import { auth, provider, db } from "./firebase/config";
+import { auth, provider, db } from "./firebase";
 import {
   collection,
   addDoc,
