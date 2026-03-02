@@ -182,7 +182,7 @@ Googleが提供する
 
 ![width:400px](./image/12.png)
 
-- firebase.jsという新しいファイルを作り、その中に貼り付け
+- firebase.jsの中に貼り付け
 
 ![width:300px](./image/13.png)
 
