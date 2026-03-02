@@ -270,7 +270,7 @@ import { auth, provider, db } from "./firebase/config";
 
 ---
 
-- app.jsxの`handleLogin`関数を以下をコピーして差し替え
+- app.jsxの`handleLogin`関数を以下のように修正
 
 ```js
 const handleLogin = () => {
