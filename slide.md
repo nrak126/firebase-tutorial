@@ -120,7 +120,33 @@ Googleが提供する
 
 ---
 
-## プロジェクトの作成
+## 今回使うファイルのダウンロード
+
+- 以下のURLからダウンロードできます
+- ダウンロードが終わったらvscodeで開いてください。
+  https://github.com/nrak126/firebase-tutorial/archive/refs/heads/main.zip
+
+---
+
+- vscodeのターミナルで以下の三つのコマンドを実行
+
+```
+cd before
+```
+
+```
+npm i
+```
+
+```
+npm run dev
+```
+
+- サーバーが立ち上がったらhttp://localhost:5173/ にアクセス
+
+---
+
+## firebaseプロジェクトの作成
 
 - firebase のURL
   https://firebase.google.com/?hl=ja
@@ -170,9 +196,7 @@ Googleが提供する
 
 ![width:700px](./image/10.png)
 
-- vscodeに移動して
-- `cd before` でbeforeディレクトリに移動
-- コピーしたコマンドを貼り付けて実行
+- vscodeにのターミナルに貼り付けて実行
 
 ![width:700px](./image/11.png)
 
@@ -191,6 +215,7 @@ Googleが提供する
 ---
 
 ### ログイン機能のための設定
+
 - 左側にある「構築」の中の「Authentication」をクリック
 
 ![width:700px](./image/14.png)
@@ -215,3 +240,53 @@ Googleが提供する
 ![width:700px](./image/17.png)
 
 ---
+
+- firebase.jsにコードを追加
+
+![width:700px](./image/18.png)
+
+---
+
+```js
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+```
+
+```js
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+export { auth, provider };
+```
+
+---
+
+- app.jsxに移動
+- import文を追加
+
+```js
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider, db } from "./firebase/config";
+```
+
+---
+
+- app.jsxの`handleLogin`関数を以下をコピーして差し替え
+
+```js
+const handleLogin = () => {
+  signInWithPopup(auth, provider).then((result) => {
+    setCurrentUser(result.user);
+  });
+};
+```
+
+---
+
+- app.jsxの下の方へ移動
+- この2行を修正
+  ![width:700px](./image/19.png)
+
+```jsx
+<span>ようこそ、{currentUser.displayName}さん</span>
+<img src={currentUser.photoURL} className="user-avatar" />
+```
