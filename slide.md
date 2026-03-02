@@ -265,7 +265,7 @@ export { auth, provider };
 
 ```js
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider, db } from "./firebase/config";
+import { auth, provider } from "./firebase";
 ```
 
 ---
