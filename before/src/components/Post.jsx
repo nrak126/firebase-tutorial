@@ -1,7 +1,4 @@
-function Post({ post, onLike, currentUser }) {
-  const likedBy = post.likedBy || [];
-  const hasLiked = likedBy.includes(currentUser);
-
+function Post({ post }) {
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const now = new Date();
@@ -23,15 +20,6 @@ function Post({ post, onLike, currentUser }) {
         </div>
       </div>
       <div className="post-content">{post.content}</div>
-      <div className="post-actions">
-        <button
-          onClick={() => onLike(post.id)}
-          className={`like-btn ${hasLiked ? "liked" : ""}`}
-          title={hasLiked ? "いいねを取り消す" : "いいね"}
-        >
-          {hasLiked ? "❤️" : "🤍"} {post.likes > 0 && post.likes}
-        </button>
-      </div>
     </div>
   );
 }

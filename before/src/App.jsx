@@ -11,8 +11,6 @@ function App() {
       author: "サンプルユーザー",
       content: "これはサンプル投稿です！",
       timestamp: new Date().toISOString(),
-      likes: 5,
-      likedBy: ["ユーザー1", "ユーザー2"], // いいねしたユーザーのリスト
     },
   ]);
 
@@ -46,34 +44,8 @@ function App() {
       author: currentUser,
       content: content,
       timestamp: new Date().toISOString(),
-      likes: 0,
-      likedBy: [], // いいねしたユーザーのリスト
     };
     setPosts([newPost, ...posts]);
-  };
-
-  /**
-   * いいねした時に呼ばれる関数
-   * @param {*} postId
-   */
-  const handleLike = (postId) => {
-    setPosts(
-      posts.map((post) => {
-        if (post.id === postId) {
-          const likedBy = post.likedBy || [];
-          const hasLiked = likedBy.includes(currentUser);
-
-          return {
-            ...post,
-            likes: hasLiked ? post.likes - 1 : post.likes + 1,
-            likedBy: hasLiked
-              ? likedBy.filter((user) => user !== currentUser)
-              : [...likedBy, currentUser],
-          };
-        }
-        return post;
-      }),
-    );
   };
 
   if (!currentUser) {
@@ -94,7 +66,7 @@ function App() {
       </header>
       <main className="main-content">
         <PostForm onPost={handlePost} />
-        <Timeline posts={posts} onLike={handleLike} currentUser={currentUser} />
+        <Timeline posts={posts} />
       </main>
     </div>
   );

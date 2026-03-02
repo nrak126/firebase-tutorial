@@ -1,6 +1,6 @@
 import Post from "./Post";
 
-function Timeline({ posts, onLike, currentUser }) {
+function Timeline({ posts }) {
   return (
     <div className="timeline">
       <h2>タイムライン</h2>
@@ -12,8 +12,6 @@ function Timeline({ posts, onLike, currentUser }) {
             <Post
               key={post.id}
               post={post}
-              onLike={onLike}
-              currentUser={currentUser}
             />
           ))
         )}
